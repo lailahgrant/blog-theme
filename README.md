@@ -708,6 +708,62 @@ get_footer();
 ```
 
 
+### Add WIDGETS
+- For extra customization by the user
+- Add widgets 
+- Add feature in the `functions.php` as follows;
+
+```php
+//Custom Widgets
+function blogsite_widget_areas(){
+    register_sidebar(
+        array(
+            'before_title' => '',
+            'after_title' => '',
+            'before_widget' => '<div class="widget-item">',
+            'after_widget' => '</div>',
+            'name' => 'Sidebar Area',
+            'id' => 'sidebar-1',
+            'description' => 'Sidebar Widget Area'
+        )
+    );
+
+    register_sidebar(
+        array(
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>',
+            'before_widget' => '<div class="footer-widget-item">',
+            'after_widget' => '</div>',
+            'name' => 'Footer Area',
+            'id' => 'footer-1',
+            'description' => 'Footer Widget Area'
+        )
+    );
+}
+
+add_action('widgets_init', 'blogsite_widget_areas');
+
+```
+
+- The above code creates new widgets `Sidebar Area` | `Footer Area` in the `Appearance`, `Widgets`, in the dashboard.
+
+<img src="">
+
+- Output the sidebar on the page dynamically in the `header.php` as follows;
+
+```php
+<!-- Add sidebar widget dynamically -->
+					<?php
+						dynamic_sidebar('sidebar-1');
+					?>
+```
+
+> To make the navbar editable by the user on the dashboard
+> - Cut and paste the header into the `sidebar widget` in the dashboard in the sidebar widget.
+> - User can remove or add links they want.
+
+`Footer Area`
+-  Add `<?php dynamic_sidebar('sidebar-1'); ?>` into the `footer.php` to add dynamic widgets.
 
 
 

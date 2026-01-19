@@ -61,4 +61,32 @@ function blogsite_register_scripts(){
 add_action('wp_enqueue_scripts', 'blogsite_register_scripts');
 
 
+//Custom Widgets
+function blogsite_widget_areas(){
+    register_sidebar(
+        array(
+            'before_title' => '',
+            'after_title' => '',
+            'before_widget' => '<ul class="social-list list-inline py-3 mx-auto">',
+            'after_widget' => '</ul>',
+            'name' => 'Sidebar Area',
+            'id' => 'sidebar-1',
+            'description' => 'Sidebar Widget Area'
+        )
+    );
+
+    register_sidebar(
+        array(
+            'before_title' => '<h2 class="widget-title">',
+            'after_title' => '</h2>',
+            'before_widget' => '<div class="footer-widget-item">',
+            'after_widget' => '</div>',
+            'name' => 'Footer Area',
+            'id' => 'footer-1',
+            'description' => 'Footer Widget Area'
+        )
+    );
+}
+
+add_action('widgets_init', 'blogsite_widget_areas');
 ?>

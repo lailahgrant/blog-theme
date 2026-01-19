@@ -69,8 +69,15 @@
 					<li class="list-inline-item"><a href="#"><i class="fab fa-codepen fa-fw"></i></a></li>
 				</ul>
 
+				<!-- Add sidebar widget dynamically -->
+					<?php
+						dynamic_sidebar('sidebar-1');
+					?>
+
 			</div>
+
 		</nav>
+
     </header>
 
 	<div class="main-wrapper">
