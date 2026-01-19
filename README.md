@@ -747,7 +747,7 @@ add_action('widgets_init', 'blogsite_widget_areas');
 
 - The above code creates new widgets `Sidebar Area` | `Footer Area` in the `Appearance`, `Widgets`, in the dashboard.
 
-<img src="">
+<img src="./custom-widgets.png" alt="Custom Widget" >
 
 - Output the sidebar on the page dynamically in the `header.php` as follows;
 
@@ -766,8 +766,78 @@ add_action('widgets_init', 'blogsite_widget_areas');
 -  Add `<?php dynamic_sidebar('sidebar-1'); ?>` into the `footer.php` to add dynamic widgets.
 
 
+### Page Not Found - 404 page
+- Copy content from `index.php` file into `404.php` and edit as follows;
+- Add search form for posts
+
+```php
+<?php
+ get_header();
+?>
+    
+    
+<article class="content px-3 py-5 p-md-5">
+	  
+<h1>Page Not Found</p>
+
+<?php
+get_search_form();
+?>
+
+</article>
+
+<?php
+
+get_footer();
+
+?>
+    
+```
+
+#### Search page
 
 
+- Add code from `archive.php` into `search.php` as follows
+
+```php
+<?php
+ get_header();
+?>
+    
+    
+		<article class="content px-3 py-5 p-md-5">
+	    
+		<?php
+			if(have_posts()){
+				while(have_posts()){
+					the_post();
+					get_template_part('template-parts/content', 'archive');
+				}
+			}
+	
+		?> 
+
+	    </article>
+	    
+    
+<?php
+
+get_footer();
+
+?>
+    
+```
+
+- Add `Search` in the Footer widgets
+
+<img src="./custom-widget-footer.png" alt="Custom Footer Widgets">
+
+<hr>
+
+## To Study
+
+- [x] Custom Post Types
+- [x] Custom Fields 
 
 
 
